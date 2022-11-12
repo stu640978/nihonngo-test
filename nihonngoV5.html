@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>五十音測驗</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <style>
+        body {
+            background-color: powderblue;
+        }
+
+        h1 {
+            color: rgb(0, 0, 0);
+        }
+    </style>
+
+    <script type="text/javascript" nonce="5e7ecdf536fc4707b2ee11efb63"
+        src="//local.adguard.org?ts=1668263258496&amp;type=content-script&amp;dmn=doc-0g-ac-docs.googleusercontent.com&amp;pth=%2Fdocs%2Fsecuresc%2Fgnttcq478o4l48p1vah9euem40o3rko6%2Fl2qpj6ccuo4ilv47b83nmievpp4s6sel%2F1668268350000%2F08430296556735178158%2F03439776115413384028%2F1UDlEUV1Wnz0Ki22it2hrKtBHCPujoNyY%3Fe%3Ddownload%26ax%3DAEKYgyRe2EEAkm4uEBbyaKWt39Z80JrsQarE-eY2_DsxbmTSJWDdNUYnsnAdHmBjlgBYta07hZO1K0tTCipNuOULM3qEC0whQZoZwkbZ-xYhIDq6DAWGrWTGQB-EobBYrOkDTJTA0sEuQwu_erAoe4G4bPMhsOg5MfeEzAsk0-G6HizZXlzDS47fUzWFz4MpN5FV4KB3AhnSoKvkvrNI7oanqvMGorJqI-fz14gv5d9vbO0KeYoqIeEHQQB94yG-XBSVspsPJLjQ-aVkd0O_GdaSWvota_bKGTUTWQe_qXwl9TF4qaH6p6S7t9Atu0DkMq94R36BS6j7cuUwzJ6xMno4jmyBWdkJ8odaHGvRTk6sXIxERE2OtfY65J8Ew1oiu_qfI3mb5-b2rNWYGxwSYnftnmvhqyuLlLBJTGuB9u-wcwgfGrPRc7XGlLv9_giwVbdLnyaYkj6pBJMAe-2I4o6iDfRqjVvHJGW386AkgYaPK6FAjzmgdi7ca26MOKEGpu_hDgLbt62IzPbA7Sfu_HkmMwjPsyHag44H-9x6R8OoWRW5yS1J0_8PvrFhBTyIhW_B8f4h-hjJ_6nEiA8i7gWZbwg6N6iNC__m8TobPUD6JUiK9wp7b52qNyVMB3bjHszrxptdOw9WJQ14Jcn_6e82R3rg13SjqkOa_ilJoz4kHIEDKfFHdn2dEFQEsXzzcqQ13B67E7fJZJNwO5Jxjw7KNkqG1wzbbMhEK7n5r8fQHspbUras6FRGKBIdcKN6VQsoAUGnlTauhB32L1c9ghYJzRpQOyJflxwA4Iv7Xnw8S19XKGsu_uQAA5jLbXKdjjqFI1o8E_nQ3x4ogMF_45M7Yi-52IYLUnqPe1DzUOHC__cO96smlYRRocFiPI8SrPAXAFrPhsHT7Yv7An89ZCwzXBe2erAiQNcF3VDB010%26uuid%3D66a25888-d719-460c-ba7e-ed1c0897d3bd%26authuser%3D0&amp;app=msedge.exe&amp;css=3&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1"></script>
+    <script type="text/javascript" nonce="5e7ecdf536fc4707b2ee11efb63"
+        src="//local.adguard.org?ts=1668263258496&amp;name=AdGuard%20Extra&amp;name=AdGuard%20Popup%20Blocker&amp;type=user-script"></script>
+</head>
+
+<body style="text-align: center;" class="change">
+    <script>
+        var ans = 0;
+        var T = 0;
+        var F = 0;
+        var count = 5;
+        var question = 0;
+
+        function makeid() {
+            question++;
+            if (question > 10) {
+                question = 0;
+                end();
+            }
+            else {
+                var characters = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん';
+                showQuest();
+                showNext();
+                hideOver();
+                hideExplain();
+                /*
+                var a = Math.random() + ""
+                var rand1 = a.charAt(10)
+                */
+                var randA = Math.floor(Math.random() * 45);
+                quotes = new Array
+                quotes[0] = 'a'
+                quotes[1] = 'i'
+                quotes[2] = 'u'
+                quotes[3] = 'e'
+                quotes[4] = 'o'
+                quotes[5] = 'ka'
+                quotes[6] = 'ki'
+                quotes[7] = 'ku'
+                quotes[8] = 'ke'
+                quotes[9] = 'ko'
+                quotes[10] = 'sa'
+                quotes[11] = 'shi'
+                quotes[12] = 'su'
+                quotes[13] = 'se'
+                quotes[14] = 'so'
+                quotes[15] = 'ta'
+                quotes[16] = 'chi'
+                quotes[17] = 'tsu'
+                quotes[18] = 'te'
+                quotes[19] = 'to'
+                quotes[20] = 'na'
+                quotes[21] = 'ni'
+                quotes[22] = 'nu'
+                quotes[23] = 'ne'
+                quotes[24] = 'no'
+                quotes[25] = 'ha'
+                quotes[26] = 'hi'
+                quotes[27] = 'fu'
+                quotes[28] = 'he'
+                quotes[29] = 'ho'
+                quotes[30] = 'ma'
+                quotes[31] = 'mi'
+                quotes[32] = 'mu'
+                quotes[33] = 'me'
+                quotes[34] = 'mo'
+                quotes[35] = 'ya'
+                quotes[36] = 'yu'
+                quotes[37] = 'yo'
+                quotes[38] = 'ra'
+                quotes[39] = 'ri'
+                quotes[40] = 'ru'
+                quotes[41] = 're'
+                quotes[42] = 'ro'
+                quotes[43] = 'wa'
+                quotes[44] = 'wo'
+                var randQ = Math.floor(Math.random() * 4);
+                quest = new Array
+                quest[0] = 'quest1';
+                quest[1] = 'quest2';
+                quest[2] = 'quest3';
+                quest[3] = 'quest4';
+                var randB = Math.floor(Math.random() * 45);
+                var randC = Math.floor(Math.random() * 45);
+                var randD = Math.floor(Math.random() * 45);
+                while (randB == randA || randB == randC || randB == randD) {
+                    randB = Math.floor(Math.random() * 45);
+                }
+                while (randC == randB || randC == randA || randC == randD) {
+                    randC = Math.floor(Math.random() * 45);
+                }
+                while (randD == randC || randD == randB || randD == randA) {
+                    randD = Math.floor(Math.random() * 45);
+                }
+                document.getElementById("q").innerHTML = quotes[randA]
+
+                var flag = 3;
+                for (let i = 0; i < 4; i++) {
+                    document.getElementById(quest[i]).style.color = "black";
+                }
+                for (let i = 0; i < 4; i++) {
+                    if (i != randQ && flag == 1) document.getElementById(quest[i]).value = characters[randB];
+                    if (i != randQ && flag == 2) document.getElementById(quest[i]).value = characters[randC];
+                    if (i != randQ && flag == 3) document.getElementById(quest[i]).value = characters[randD];
+                    if (i == randQ) document.getElementById(quest[i]).value = characters[randA];
+                    if (i != randQ) flag--;
+                }
+                ans = randA;
+                /*
+                for (let i = 0; i < 4; i++) {
+                    document.getElementById(quest[i]).onclick = function () { answer(); };
+                }
+                */
+                document.getElementById("quest1").onclick = function () { answer1(); };
+                document.getElementById("quest2").onclick = function () { answer2(); };
+                document.getElementById("quest3").onclick = function () { answer3(); };
+                document.getElementById("quest4").onclick = function () { answer4(); };
+                document.getElementById("quest1").style.color = "white";
+                document.getElementById("quest2").style.color = "white";
+                document.getElementById("quest3").style.color = "white";
+                document.getElementById("quest4").style.color = "white";
+                document.getElementById("quest1").style.background = "gray";
+                document.getElementById("quest2").style.background = "gray";
+                document.getElementById("quest3").style.background = "gray";
+                document.getElementById("quest4").style.background = "gray";
+                document.getElementById("count").innerHTML = question + "/10";
+            }
+        }
+
+        function answer1() {
+
+            var characters = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん';
+            quest = new Array
+            quest[0] = 'quest1';
+            quest[1] = 'quest2';
+            quest[2] = 'quest3';
+            quest[3] = 'quest4';
+            if (characters[ans] == document.getElementById('quest1').value) {
+                T++;
+                document.getElementById(quest[0]).style.background = "green";
+            }
+            else {
+                F++;
+                document.getElementById(quest[0]).style.background = "red";
+                for (let i = 0; i < 4; i++) {
+                    if (characters[ans] == document.getElementById(quest[i]).value) {
+                        document.getElementById(quest[i]).style.background = "green";
+                    }
+                }
+            }
+            /*
+            for (let i = 0; i < 4; i++) {
+                if(characters[ans] == document.getElementById(quest[i]).value){
+                    document.getElementById(quest[i]).style.background = "green";
+                }
+                else document.getElementById(quest[i]).style.background = "red";
+            }
+            */
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(quest[i]).onclick = function () { };
+            }
+            count = 3
+            countDown();
+            setTimeout("makeid();", 3000);
+        }
+
+        function answer2() {
+
+            var characters = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん';
+            quest = new Array
+            quest[0] = 'quest1';
+            quest[1] = 'quest2';
+            quest[2] = 'quest3';
+            quest[3] = 'quest4';
+            if (characters[ans] == document.getElementById('quest2').value) {
+                T++;
+                document.getElementById(quest[1]).style.background = "green";
+            }
+            else {
+                F++;
+                document.getElementById(quest[1]).style.background = "red";
+                for (let i = 0; i < 4; i++) {
+                    if (characters[ans] == document.getElementById(quest[i]).value) {
+                        document.getElementById(quest[i]).style.background = "green";
+                    }
+                }
+            }
+            /*
+            for (let i = 0; i < 4; i++) {
+                if(characters[ans] == document.getElementById(quest[i]).value){
+                    document.getElementById(quest[i]).style.background = "green";
+                }
+                else document.getElementById(quest[i]).style.background = "red";
+            }
+            */
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(quest[i]).onclick = function () { };
+            }
+            count = 3
+            countDown();
+            setTimeout("makeid();", 3000);
+        }
+
+        function answer3() {
+
+            var characters = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん';
+            quest = new Array
+            quest[0] = 'quest1';
+            quest[1] = 'quest2';
+            quest[2] = 'quest3';
+            quest[3] = 'quest4';
+            if (characters[ans] == document.getElementById('quest3').value) {
+                T++;
+                document.getElementById(quest[2]).style.background = "green";
+            }
+            else {
+                F++;
+                document.getElementById(quest[2]).style.background = "red";
+                for (let i = 0; i < 4; i++) {
+                    if (characters[ans] == document.getElementById(quest[i]).value) {
+                        document.getElementById(quest[i]).style.background = "green";
+                    }
+                }
+            }
+            /*
+            for (let i = 0; i < 4; i++) {
+                if(characters[ans] == document.getElementById(quest[i]).value){
+                    document.getElementById(quest[i]).style.background = "green";
+                }
+                else document.getElementById(quest[i]).style.background = "red";
+            }
+            */
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(quest[i]).onclick = function () { };
+            }
+            count = 3
+            countDown();
+            setTimeout("makeid();", 3000);
+        }
+
+        function answer4() {
+
+            var characters = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをん';
+            quest = new Array
+            quest[0] = 'quest1';
+            quest[1] = 'quest2';
+            quest[2] = 'quest3';
+            quest[3] = 'quest4';
+            if (characters[ans] == document.getElementById('quest4').value) {
+                T++;
+                document.getElementById(quest[3]).style.background = "green";
+            }
+            else {
+                F++;
+                document.getElementById(quest[3]).style.background = "red";
+                for (let i = 0; i < 4; i++) {
+                    if (characters[ans] == document.getElementById(quest[i]).value) {
+                        document.getElementById(quest[i]).style.background = "green";
+                    }
+                }
+            }
+            /*
+            for (let i = 0; i < 4; i++) {
+                if(characters[ans] == document.getElementById(quest[i]).value){
+                    document.getElementById(quest[i]).style.background = "green";
+                }
+                else document.getElementById(quest[i]).style.background = "red";
+            }
+            */
+            for (let i = 0; i < 4; i++) {
+                document.getElementById(quest[i]).onclick = function () { };
+            }
+            count = 3
+            countDown();
+            setTimeout("makeid();", 3000);
+        }
+
+        function hideQuest() {
+            let div_quest = document.getElementById("div-quest");
+            let div_start = document.getElementById("div-start");
+            hideElement(div_quest);
+            showElement(div_start);
+        }
+
+        function showQuest() {
+            let div_quest = document.getElementById("div-quest");
+            let div_start = document.getElementById("div-start");
+            showElement(div_quest);
+            hideElement(div_start);
+        }
+
+        function hideNext() {
+            let next = document.getElementById("next");
+            hideElement(next);
+        }
+
+        function showNext() {
+            let next = document.getElementById("next");
+            showElement(next);
+        }
+
+        function end() {
+            hideQuest()
+            hideNext()
+            showExplain()
+            score();
+            showOver()
+        }
+
+        function score() {
+            document.getElementById("T").innerHTML = "答對:" + T;
+            document.getElementById("F").innerHTML = "答錯:" + F;
+            let persent;
+            if (T + F != 0) {
+                persent = Math.round((T / (T + F)) * 100);
+                document.getElementById("persent").innerHTML = "答對率:" + persent + "％";
+            }
+            else {
+                document.getElementById("persent").innerHTML = "沒有作答";
+            }
+            T = 0;
+            F = 0;
+        }
+
+        function showOver() {
+            let over = document.getElementById("over");
+            showElement(over);
+        }
+        function hideOver() {
+            let over = document.getElementById("over");
+            hideElement(over);
+        }
+
+        function hideExplain() {
+            let explain = document.getElementById("explain");
+            hideElement(explain);
+        }
+
+        function showExplain() {
+            let explain = document.getElementById("explain");
+            showElement(explain);
+        }
+
+        function hidePic() {
+            let pic = document.getElementById("pic");
+            hideElement(pic);
+            document.getElementById("pict").onclick = function () { showPic() };
+        }
+
+        function showPic() {
+            let pic = document.getElementById("pic");
+            showElement(pic);
+            document.getElementById("pict").onclick = function () { hidePic() };
+        }
+
+        function showElement(element) {
+            element.removeAttribute("hidden");
+        }
+
+        function hideElement(element) {
+            element.setAttribute("hidden", true);
+        }
+        function countDown() {
+            if (count == 0) {
+                document.getElementById("timeBox").innerHTML = "<br>";
+            }
+            else {
+                // 將秒數寫在指定元素中
+                document.getElementById("timeBox").innerHTML = count + "秒後下一題";
+                // 每次執行就減1
+                count -= 1;
+                setTimeout("countDown()", 1000);
+            }
+        }
+
+    </script>
+
+    <div id="div-start" style="width: 100%;">
+
+        <h1 style="text-align: center; font-size: 75px; margin-top: 80px;">日本五十音測驗</h1>
+        <span style="display:flex; float:right">
+            <input
+                style="font-size: 25px; height: 50px; width: 150px; color:rgb(255, 255, 255); background-color:gray; position: fixed; top: 50px; right: 40px; cursor: pointer;"
+                type="Button"
+                id="pict"
+                value="複習五十音"
+                onclick="showPic()" />
+        </span>
+        <br>
+        <div id="pic" hidden>
+            <img src="5ce06f7b3124d6d7.jpg" style="height: 750px; width: 750px;" />
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; margin-top: 50px;">
+            <span style="text-align: center; font-size: 50px; border: #000 1px solid; width: 450px; height: 70px; line-height: 70px; cursor: pointer;" onclick="makeid()">
+                →點此開始測驗←
+            </span>
+        </div>
+
+    </div>
+    <div id="div-quest" hidden>
+        <br>
+        <h3 style="text-align: center; font-size: 50px;" id="count" value=""></h3>
+        <h1 style="text-align: center; font-size: 75px;" id="q" value=""></h1>
+
+        <p id="timeBox" style="text-align: center; font-size: 30px;"><br></p>
+
+        <span>
+            <div>
+                <input
+                    style="font-size: 75px; height: 150px; width: 150px; color:rgb(255, 255, 255); background-color:gray; cursor: pointer;"
+                    type="Button" id="quest1" value="" onclick="answer1()">
+
+                <input
+                    style="font-size: 75px; height: 150px; width: 150px; color:rgb(255, 255, 255); background-color:gray; cursor: pointer;"
+                    type="Button" id="quest2" value="" onclick="answer2()">
+            </div>
+            <div style="margin:5px">
+
+            </div>
+            <div>
+                <input
+                    style="font-size: 75px; height: 150px; width: 150px; color:rgb(255, 255, 255); background-color:gray; cursor: pointer;"
+                    type="Button" id="quest3" value="" onclick="answer3()">
+
+                <input
+                    style="font-size: 75px; height: 150px; width: 150px; color:rgb(255, 255, 255); background-color:gray; cursor: pointer;"
+                    type="Button" id="quest4" value="" onclick="answer4()">
+            </div>
+            <!--
+            <input style="font-size: 25px; height: 75px; width: 75px;" type="Button" id="quest1" value="" onclick="answer1()">
+
+            <input style="font-size: 25px; height: 75px; width: 75px;" type="Button" id="quest2" value="" onclick="answer2()">
+
+            <input style="font-size: 25px; height: 75px; width: 75px;" type="Button" id="quest3" value="" onclick="answer3()">
+
+            <input style="font-size: 25px; height: 75px; width: 75px;" type="Button" id="quest4" value="" onclick="answer4()">
+            -->
+        </span>
+    </div>
+
+    <div id="next" hidden>
+        <br>
+        <br>
+        <br>
+        <!--<input style="float: center; font-size: 50px" type="Button" id="next" value="結束" onclick="end()">-->
+    </div>
+
+    <div id="over" hidden>
+        <h1 id="T" style="text-align: center; font-size: 75px;"></h1>
+        <h1 id="F" style="text-align: center; font-size: 75px;"></h1>
+        <h1 id="persent" style="text-align: center; font-size: 75px;"></h1>
+    </div>
+    <div id="explain" style="margin-top: 80px;">
+        <h1 style="text-align: center; font-size: 50px; margin-bottom: 20px;">説明</h1>
+        <ul style="text-align: center; font-size: 25px; height: 36px;">根據上方讀音選出平假名</ul>
+        <ul style="text-align: center; font-size: 25px; height: 36px;">再按一次答案可以下一題</ul>
+        <ul style="text-align: center; font-size: 25px; height: 36px;">結束->結束測驗，計算結果。</ul>
+    </div>
+
+</body>
+
+<style>
+    html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html {
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+</style>
+
+</html>
